@@ -17,8 +17,8 @@ db = SQLAlchemy(metadata=metadata)
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True)
-    password = db.Column(db.String(50))
-    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(100))
+    email = db.Column(db.String(100), unique=True)
     gender = db.Column(db.String(20))
     results= db.relationship("QuizResult", backref="user")
 
