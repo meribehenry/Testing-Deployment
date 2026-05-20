@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Quiz Page{% endblock %}
+{% block content %}
+    <h2>Quiz</h2>
+    <p>{{number}}.<strong>{{question}}</strong></p>
+
+    <section>
+        <form method="POST">
+            {{ form.hidden_tag()}}
+
+            {{form.answer.label}}
+            {{form.answer() }}
+            {% if form.answer.errors%}
+                {% for error in form.answer.erros %}
+                    <br><small>{{error}}</small>
+                {% endfor %}    
+            {% endif %}
+
+            {{form.submit()}}
+        </form>
+    </section>
+
+{% endblock %}

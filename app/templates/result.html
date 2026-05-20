@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block content %}
+    <h2>Results</h2>
+    <hr>
+    <h3>Overview:</h3>
+    
+    <h4>Your answers:</h4>
+    {% for question, answer in quiz_overview.items() %}
+        <p>
+            {{loop.index0 + 1}}.&nbsp;{{question}}
+            <br>
+            <small><strong>Ans:&nbsp{{answer}}</strong></small>
+        </p>
+
+    {% endfor %}
+
+    <h4>Correct Answers:</h4>
+    {% for q in questions %}
+        <p>
+            {{loop.index0 + 1}}.&nbsp;{{q.question}}
+            <br>
+            <small><strong>Ans:&nbsp;{{q.answer}}</strong></small>
+        </p>
+    {% endfor %}
+
+    <div>
+        <p>Your score is <strong>{{score}}</strong></p>
+        <a href="{{url_for('quiz_system.start')}}">Restart</a>
+        <p><a href="{{url_for('main.dashboard')}}">Back</a></p>
+    </div>
+
+{% endblock %}
